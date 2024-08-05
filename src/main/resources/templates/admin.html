@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<h1>Admin Panel</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Telegram ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.username}">Username</td>
+        <td th:text="${user.telegramId}">Telegram ID</td>
+    </tr>
+    </tbody>
+</table>
+<h2>Link Telegram Account</h2>
+<form th:action="@{/linkTelegram}" method="post">
+    <div>
+        <label>Username:</label>
+        <input type="text" name="username"/>
+    </div>
+    <div>
+        <label>Telegram ID:</label>
+        <input type="text" name="telegramId"/>
+    </div>
+    <div>
+        <button type="submit">Link</button>
+    </div>
+</form>
+</body>
+</html>
